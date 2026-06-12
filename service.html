@@ -728,15 +728,16 @@
       .nav-links, .btn-nav { display: none; }
       .mobile-toggle { display: block; }
     }
-    @media (max-width: 640px) {
-      .hero { padding: 96px 20px 60px; }
-      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .pkg-grid { grid-template-columns: 1fr; }
-      .stat { min-width: 90px; padding: 14px 16px; }
-      .stat-val { font-size: 18px; }
-      .main { padding: 28px 16px 60px; }
-      .cta-banner { padding: 32px 20px; }
-    }
+  @media (max-width: 640px) {
+    .hero { padding: 120px 20px 60px; }
+    .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .pkg-grid { grid-template-columns: 1fr; }
+    .stat { min-width: 100px; padding: 12px 14px; }
+    .stat-val { font-size: 17px; }
+    .stat-lbl { font-size: 10px; }
+    .main { padding: 28px 16px 60px; }
+    .cta-banner { padding: 32px 20px; }
+  }
     @media (max-width: 380px) {
       .cards-grid { grid-template-columns: 1fr; }
     }
