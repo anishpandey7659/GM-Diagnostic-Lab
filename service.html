@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | GM Diagnostic Lab – Bharatpur, Chitwan</title>
+  <meta name="description" content="Browse all diagnostic tests, panels, and health packages offered by GM Diagnostic Lab in Bharatpur, Chitwan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0F1F38;
+      --blue:    #1558A8;
+      --sky:     #1E7FD8;
+      --teal:    #0AADA9;
+      --teal-lt: #E0F7F6;
+      --bg:      #F3F7FB;
+      --card:    #FFFFFF;
+      --border:  #E0E9F4;
+      --text:    #0F1F38;
+      --muted:   #637490;
+      --radius:  10px;
+      --radius-lg: 16px;
+      --shadow:  0 1px 4px rgba(15,31,56,0.07);
+      --shadow-h: 0 4px 20px rgba(15,31,56,0.12);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 1240px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 20px;
+      border: 1px solid rgba(224,233,244,0.8);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      box-shadow: 0 4px 24px rgba(15,31,56,0.07);
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled {
+      box-shadow: 0 8px 32px rgba(15,31,56,0.13);
+      padding: 12px 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--sky) 0%, var(--blue) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      box-shadow: 0 8px 20px rgba(30,127,216,0.35);
+    }
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .logo-text span { color: var(--sky); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-links li a {
+      padding: 10px 18px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--muted);
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      display: block;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background: #DBEEFF;
+      color: var(--sky);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--sky) 0%, var(--blue) 100%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(30,127,216,0.3);
+    }
+    .btn-nav:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--navy);
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 120px 24px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(21,88,168,0.5) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.8);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      padding: 5px 14px;
+      border-radius: 40px;
+      margin-bottom: 24px;
+    }
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800;
+      color: #fff;
+      max-width: 700px;
+      margin: 0 auto 16px;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 em {
+      color: var(--teal);
+      font-style: normal;
+    }
+    .hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto 36px;
+    }
+
+    /* ── SEARCH ── */
+    .search-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .search-wrap i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9BB8D6;
+      font-size: 15px;
+      pointer-events: none;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 15px 18px 15px 46px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      outline: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    #searchInput::placeholder { color: rgba(255,255,255,0.35); }
+    #searchInput:focus {
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    /* ── STAT STRIP ── */
+    .stats {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+    }
+    .stat {
+      flex: 1;
+      min-width: 120px;
+      max-width: 220px;
+      padding: 18px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .stat-val .accent { color: var(--teal); }
+    .stat-lbl {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-top: 2px;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(243,247,251,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+    }
+    .filter-scroll {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .filter-scroll::-webkit-scrollbar { display: none; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      outline: none;
+    }
+    .pill:hover { border-color: var(--sky); color: var(--sky); background: #EBF4FC; }
+    .pill.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+    .pill .cnt {
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(255,255,255,0.22);
+      border-radius: 20px;
+      padding: 1px 6px;
+      color: rgba(255,255,255,0.9);
+    }
+    .pill:not(.active) .cnt {
+      background: #EBF4FC;
+      color: var(--blue);
+    }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 44px 24px 80px;
+    }
+
+    /* ── SECTION ── */
+    .cat-sec { margin-bottom: 52px; }
+
+    .cat-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .cat-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .cat-head-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .cat-head-text .sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+    .cat-badge {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue);
+      background: #EBF4FC;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 18px;
+    }
+
+    /* ── CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+    }
+
+    .svc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+      cursor: default;
+    }
+    .svc-card:hover {
+      box-shadow: var(--shadow-h);
+      border-color: #BDD5F0;
+      transform: translateY(-1px);
+    }
+    .card-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .card-price .nrs {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-right: 1px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+    .tag-same {
+      color: #077A52;
+      background: #E5F7F0;
+    }
+    .tag-delay {
+      color: #7A5200;
+      background: #FFF4DC;
+    }
+    .tag-out {
+      color: #555;
+      background: #F1F1F1;
+    }
+
+    /* ── PACKAGES GRID ── */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 14px;
+    }
+
+    .pkg-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+    }
+    .pkg-card:hover {
+      box-shadow: var(--shadow-h);
+      border-color: #BDD5F0;
+      transform: translateY(-1px);
+    }
+    .pkg-top {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--border);
+      background: #F7FAFD;
+    }
+    .pkg-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .pkg-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+    .pkg-price .nrs {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-right: 2px;
+    }
+    .pkg-tests {
+      padding: 14px 20px 16px;
+    }
+    .pkg-tests ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .pkg-tests li {
+      font-size: 11.5px;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    /* ── NO RESULTS ── */
+    .no-results {
+      text-align: center;
+      padding: 80px 24px;
+      display: none;
+    }
+    .no-results.show { display: block; }
+    .no-results .nr-icon {
+      width: 60px;
+      height: 60px;
+      background: #EBF4FC;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 16px;
+      color: var(--blue);
+    }
+    .no-results h3 { font-family: 'Syne', sans-serif; font-size: 18px; color: var(--navy); margin-bottom: 8px; }
+    .no-results p { color: var(--muted); font-size: 14px; }
+    .no-results button {
+      background: none; border: none; color: var(--blue);
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-banner h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .cta-banner p { color: rgba(255,255,255,0.55); font-size: 14px; margin-bottom: 28px; }
+    .cta-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 22px;
+      border-radius: 40px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+    .cta-btn.primary { background: var(--teal); color: #fff; }
+    .cta-btn.primary:hover { background: #089E9B; }
+    .cta-btn.ghost {
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    .cta-btn.ghost:hover { background: rgba(255,255,255,0.13); }
+
+    mark {
+      background: #FFEE58;
+      color: inherit;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+
+    /* ── MOBILE MENU PANEL ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 480px;
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(15,31,56,0.18);
+      z-index: 1200;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateX(-50%) translateY(-10px) scale(0.97);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .mobile-menu.open {
+      display: block;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+    .menu-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px 14px;
+    }
+    .menu-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .menu-logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--sky) 0%, var(--blue) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 17px;
+      box-shadow: 0 6px 16px rgba(30,127,216,0.3);
+    }
+    .menu-logo-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .menu-logo-text span { color: var(--sky); }
+    .menu-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: var(--muted);
+      transition: background 0.15s, color 0.15s;
+    }
+    .menu-close:hover { background: #E0E9F4; color: var(--navy); }
+    .menu-links {
+      list-style: none;
+      background: #EEF5FD;
+      border-radius: 14px;
+      margin: 0 12px 12px;
+      padding: 6px;
+    }
+    .menu-links li a {
+      display: block;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 10px;
+      text-align: center;
+      transition: background 0.15s, color 0.15s;
+    }
+    .menu-links li a:hover { background: #D6E8F8; color: var(--blue); }
+    .menu-links li a.active {
+      background: #fff;
+      color: var(--blue);
+      box-shadow: 0 1px 4px rgba(15,31,56,0.08);
+    }
+    .menu-book {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 0 12px 16px;
+      padding: 13px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .menu-book:hover { background: #0F4490; }
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,31,56,0.3);
+      z-index: 1100;
+    }
+    .mobile-overlay.open { display: block; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links, .btn-nav { display: none; }
+      .mobile-toggle { display: block; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 96px 20px 60px; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .pkg-grid { grid-template-columns: 1fr; }
+      .stat { min-width: 90px; padding: 14px 16px; }
+      .stat-val { font-size: 18px; }
+      .main { padding: 28px 16px 60px; }
+      .cta-banner { padding: 32px 20px; }
+    }
+    @media (max-width: 380px) {
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">
+    <div class="logo-icon"><i class="fas fa-flask"></i></div>
+    <div class="logo-text">GM <span>Diagnostic</span> Lab</div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="index.html#packages">Health Packages</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://wa.me/9779761894416?text=Hello%20I%20would%20like%20to%20book%20an%20appointment." class="btn-nav">
+      <i class="fas fa-calendar-check"></i> Book Appointment
+    </a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- MOBILE MENU PANEL -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="menu-top">
+    <a href="index.html" class="menu-logo">
+      <div class="menu-logo-icon"><i class="fas fa-flask"></i></div>
+      <div class="menu-logo-text">GM <span>Diagnostic</span> Lab</div>
+    </a>
+    <button class="menu-close" id="menuClose" aria-label="Close menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <ul class="menu-links">
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="index.html#packages">Health Packages</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/9779761894416?text=Hello%20I%20would%20like%20to%20book%20an%20appointment." class="menu-book">
+    <i class="fas fa-calendar-check"></i> Book Appointment
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-label="Services overview">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span>Bharatpur, Chitwan · Est. Services</div>
+    <h1>Diagnostic tests you can <em>trust</em></h1>
+    <p>From routine blood work to advanced health packages — accurate results, affordable prices, same-day reports for most tests.</p>
+    <div class="search-wrap" role="search">
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <input type="search" id="searchInput" placeholder="Search tests, panels, packages…" aria-label="Search diagnostic tests" autocomplete="off" />
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats" role="region" aria-label="Lab highlights">
+  <div class="stat">
+    <div class="stat-val">329<span class="accent">+</span></div>
+    <div class="stat-lbl">Tests Available</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val"><span class="accent">~</span>80<span class="accent">%</span></div>
+    <div class="stat-lbl">Same-Day Reports</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">50<span class="accent">+</span></div>
+    <div class="stat-lbl">Health Packages</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val"><span style="font-size:14px;font-weight:500;color:var(--muted)">NRS </span>50<span class="accent">+</span></div>
+    <div class="stat-lbl">Starting Price</div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" role="navigation" aria-label="Filter by category">
+  <div class="filter-scroll">
+    <button class="pill active" data-cat="all" aria-pressed="true">All <span class="cnt" id="count-all">0</span></button>
+    <button class="pill" data-cat="executive" aria-pressed="false">🏥 Executive <span class="cnt" id="count-executive">0</span></button>
+    <button class="pill" data-cat="general" aria-pressed="false">💊 General <span class="cnt" id="count-general">0</span></button>
+    <button class="pill" data-cat="blood" aria-pressed="false">🩸 Blood <span class="cnt" id="count-blood">0</span></button>
+    <button class="pill" data-cat="diabetes" aria-pressed="false">🍬 Diabetes <span class="cnt" id="count-diabetes">0</span></button>
+    <button class="pill" data-cat="heart" aria-pressed="false">❤️ Cardiac <span class="cnt" id="count-heart">0</span></button>
+    <button class="pill" data-cat="liver" aria-pressed="false">🫁 Liver &amp; Kidney <span class="cnt" id="count-liver">0</span></button>
+    <button class="pill" data-cat="thyroid" aria-pressed="false">🦋 Thyroid <span class="cnt" id="count-thyroid">0</span></button>
+    <button class="pill" data-cat="infectious" aria-pressed="false">🦠 Infectious <span class="cnt" id="count-infectious">0</span></button>
+    <button class="pill" data-cat="cancer" aria-pressed="false">🔬 Cancer <span class="cnt" id="count-cancer">0</span></button>
+    <button class="pill" data-cat="women" aria-pressed="false">👩 Women's <span class="cnt" id="count-women">0</span></button>
+    <button class="pill" data-cat="allergy" aria-pressed="false">🌿 Allergy <span class="cnt" id="count-allergy">0</span></button>
+    <button class="pill" data-cat="individual" aria-pressed="false">🧪 Individual <span class="cnt" id="count-individual">0</span></button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main" id="mainContent">
+
+  <div class="no-results" id="noResults" aria-live="polite">
+    <div class="nr-icon"><i class="fas fa-search"></i></div>
+    <h3>No tests found</h3>
+    <p>Try a different keyword, or <button onclick="resetSearch()">browse all services</button>.</p>
+  </div>
+
+  <section class="cat-sec" data-section="executive" id="sec-executive">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#EBF3FC;">🏥</div>
+      <div class="cat-head-text">
+        <h2>Executive Health Packages</h2>
+        <div class="sub">Comprehensive checkups for corporate wellness &amp; annual assessments</div>
+      </div>
+      <span class="cat-badge" id="cc-executive"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="pkg-grid" id="grid-executive"></div>
+  </section>
+
+  <section class="cat-sec" data-section="general" id="sec-general">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#EDF9F0;">💊</div>
+      <div class="cat-head-text">
+        <h2>General Health Panels &amp; Screening</h2>
+        <div class="sub">Routine check-ups &amp; preventive wellness packages for all ages</div>
+      </div>
+      <span class="cat-badge" id="cc-general"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-general"></div>
+  </section>
+
+  <section class="cat-sec" data-section="blood" id="sec-blood">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#FEF2F2;">🩸</div>
+      <div class="cat-head-text">
+        <h2>Blood &amp; Anemia Tests</h2>
+        <div class="sub">CBC, iron studies, coagulation &amp; bone marrow evaluations</div>
+      </div>
+      <span class="cat-badge" id="cc-blood"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-blood"></div>
+  </section>
+
+  <section class="cat-sec" data-section="diabetes" id="sec-diabetes">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#FFF8ED;">🍬</div>
+      <div class="cat-head-text">
+        <h2>Diabetes &amp; Blood Sugar Tests</h2>
+        <div class="sub">Fasting glucose, HbA1c, insulin levels &amp; diabetes monitoring</div>
+      </div>
+      <span class="cat-badge" id="cc-diabetes"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-diabetes"></div>
+  </section>
+
+  <section class="cat-sec" data-section="heart" id="sec-heart">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#FEF2F2;">❤️</div>
+      <div class="cat-head-text">
+        <h2>Heart &amp; Cardiac Tests</h2>
+        <div class="sub">Lipid profiles, cardiac enzymes, troponin &amp; risk assessments</div>
+      </div>
+      <span class="cat-badge" id="cc-heart"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-heart"></div>
+  </section>
+
+  <section class="cat-sec" data-section="liver" id="sec-liver">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#F0F4FF;">🫁</div>
+      <div class="cat-head-text">
+        <h2>Liver &amp; Kidney Function Tests</h2>
+        <div class="sub">LFT, RFT, bilirubin, creatinine, nephro panels &amp; electrolytes</div>
+      </div>
+      <span class="cat-badge" id="cc-liver"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-liver"></div>
+  </section>
+
+  <section class="cat-sec" data-section="thyroid" id="sec-thyroid">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#F5F0FF;">🦋</div>
+      <div class="cat-head-text">
+        <h2>Thyroid &amp; Hormone Tests</h2>
+        <div class="sub">TSH, T3, T4, fertility hormones, cortisol &amp; more</div>
+      </div>
+      <span class="cat-badge" id="cc-thyroid"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-thyroid"></div>
+  </section>
+
+  <section class="cat-sec" data-section="infectious" id="sec-infectious">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#EFFAF5;">🦠</div>
+      <div class="cat-head-text">
+        <h2>Infectious Disease &amp; Viral Tests</h2>
+        <div class="sub">Hepatitis, HIV, dengue, typhoid, malaria &amp; fever panels</div>
+      </div>
+      <span class="cat-badge" id="cc-infectious"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-infectious"></div>
+  </section>
+
+  <section class="cat-sec" data-section="cancer" id="sec-cancer">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#FFF3F7;">🔬</div>
+      <div class="cat-head-text">
+        <h2>Cancer Marker Tests</h2>
+        <div class="sub">Tumour markers, biopsy, cytology &amp; oncology panels</div>
+      </div>
+      <span class="cat-badge" id="cc-cancer"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-cancer"></div>
+  </section>
+
+  <section class="cat-sec" data-section="women" id="sec-women">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#FDF0F8;">👩</div>
+      <div class="cat-head-text">
+        <h2>Women's Health &amp; Maternity</h2>
+        <div class="sub">Antenatal panels, fertility, PAP smear &amp; prenatal screening</div>
+      </div>
+      <span class="cat-badge" id="cc-women"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-women"></div>
+  </section>
+
+  <section class="cat-sec" data-section="allergy" id="sec-allergy">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#F0FDF4;">🌿</div>
+      <div class="cat-head-text">
+        <h2>Allergy Testing</h2>
+        <div class="sub">Food allergen panels &amp; inhalation profiles — 40+ allergens</div>
+      </div>
+      <span class="cat-badge" id="cc-allergy"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-allergy"></div>
+  </section>
+
+  <section class="cat-sec" data-section="individual" id="sec-individual">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:#F0F6FF;">🧪</div>
+      <div class="cat-head-text">
+        <h2>Individual Laboratory Tests</h2>
+        <div class="sub">Single tests ordered by your doctor — full A–Z menu</div>
+      </div>
+      <span class="cat-badge" id="cc-individual"></span>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" id="grid-individual"></div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-grid-bg"></div>
+    <div class="cta-inner">
+      <h3>Not sure which test to pick?</h3>
+      <p>Our team is here to help. Visit us at Bharatpur-7, Buddhachowk, Chitwan or reach out directly.</p>
+      <div class="cta-links">
+        <a href="tel:+977 9761894416" class="cta-btn primary"><i class="fas fa-phone-alt"></i> +977 9761894416</a>
+        <a href="tel:056-494354" class="cta-btn ghost"><i class="fas fa-phone"></i> 056-494354</a>
+        <a href="mailto:Gmdiagnosticlaboratory@gmail.com" class="cta-btn ghost"><i class="fas fa-envelope"></i> Email Us</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+const PACKAGES = {
+  executive: [
+    { name: "Executive Health Check Up – Category A", price: 5000, tests: ["CBC (Haemogram)","Blood Glucose Fasting","Lipid Profile","Liver Function Test (LFT)","Bilirubin","SGPT","SGOT","ALP","Protein","Albumin","RFT (Urea, Creatinine, Na, K, Uric Acid)","Cardiac Profile (CPK, CPK-MB, SGOT, LDH, Troponin-I)","Thyroid Function Test (FT3, FT4, TSH)","H. Pylori Ab","Urine Routine"] },
+    { name: "Executive Health Check Up – Category B", price: 4000, tests: ["CBC (Haemogram)","Blood Glucose Fasting","Lipid Profile","LFT (Bilirubin, SGPT, SGOT, ALP, Protein, Albumin)","RFT (Urea, Creatinine, Na, K, Uric Acid)","Cardiac Profile (CPK, SGOT, LDH)","Urine Routine","TSH"] },
+    { name: "Executive Health Check Up – Category C", price: 7000, tests: ["CBC (Haemogram)","Glucose F & PP","HbA1C","Lipid Profile","Thyroid Function Test","Liver Function Test","Renal Function Test","Cardiac Profile","H. Pylori Antibody","HIV I & II Antibody","HBsAg","HCV Ab","Urine R/E"] },
+    { name: "Executive Health Check Up – Category D", price: 5500, tests: ["CBC (Haemogram)","Glucose F & PP","HbA1C","Lipid Profile","Thyroid Function Test","Liver Function Test","Renal Function Test","Cardiac Profile","H. Pylori Antibody","Urine R/E"] },
+    { name: "Executive Health Check Up – Category E", price: 4000, tests: ["CBC (Haemogram)","Glucose F & PP","HbA1C","Lipid Profile","Thyroid Function Test","Liver Function Test","Renal Function Test","Cardiac Profile","Urine R/E"] },
+    { name: "Premium Health Package", price: 10500, tests: ["Glucose Fasting","CBC","ESR","RFT","Lipid Profile","LFT","Uric Acid","Calcium","Vitamin-D","HbA1c","TFT","Urine R/E"] },
+    { name: "Whole Body Checkup Package", price: 5000, tests: ["Anaemia Screen (CBC, Blood Group)","Diabetes Screen (Sugar, HbA1C)","Liver Function","Heart / Obesity (Lipid profile)","Joint Pain (RA factor, Uric acid)","Infectious Disease (HIV, HBsAg, HCV, VDRL)","Thyroid (TSH)","Kidney (Urea, Creatinine, Urine R/E)"] },
+    { name: "Comprehensive Health Panel (Female)", price: 6500, tests: ["CBC","ESR","Glucose Fasting","RFT","LFT","TSH","Uric Acid","Amylase","Electrolytes","HBsAg","Calcium","HbAIC","Blood Group","Lipid Profile","PAP Stain","Urine R/E","Stool R/E"] },
+    { name: "Comprehensive Health Panel (Male)", price: 6500, tests: ["CBC","ESR","Glucose Fasting","RFT","LFT","TSH","Uric Acid","Amylase","HBsAg","HbAIC","Calcium","Blood Group","Lipid Profile","PSA","Urine R/E","Stool R/E"] },
+  ]
+};
+
+const PANELS = {
+  general: [
+    { name: "Basic Health Package", price: 2080, schedule: "Same Day", tests: "Glucose Fasting, CBC, Creatinine, Bilirubin, ALT, Cholesterol, Triglyceride, TSH, Urine R/E, Blood Group, Uric Acid" },
+    { name: "Good Health Checkup", price: 3500, schedule: "Same Day", tests: "CBC, Fasting Sugar, Creatinine, Urea, Lipid Profile, LFT, TSH, Urine R/E, Stool R/E" },
+    { name: "Health Champion Package", price: 3500, schedule: "Same Day", tests: "CBC, ESR, Urine R/E, Blood Group, Serum Calcium, Fasting Blood Sugar, Lipid Profile, Urea, Creatinine, Uric Acid, LFT" },
+    { name: "General Health Panel", price: 6000, schedule: "Same Day", tests: "CBC, Glucose, RFT, LFT, Lipid Profile, TFT, Calcium, Chloride, Uric Acid, Blood Group" },
+    { name: "Adolescent Health Screening (13–18 yrs)", price: 6200, schedule: "Same Day", tests: "CBC, Blood Group, LFT, Lipid Profile, TSH, Vitamin D, Urine R/E, Stool Occult Blood, Stool R/E, Calcium, Phosphorus" },
+    { name: ">40 Years Health Package", price: 8500, schedule: "Same Day", tests: "Glucose Fasting, CBC, ESR, HbA1c, Lipid Profile, Uric Acid, LFT, TFT, PSA (Male) / PAP (Female), Urine R/E" },
+    { name: "Senior Citizen Package", price: 4500, schedule: "Same Day", tests: "Lipid Profile, Diabetes Screen (F/PP), Bone Strength, Liver Screening, Kidney Screening, Urine R/E, CBC, RF Factor, TSH" },
+    { name: "Obesity Panel", price: 4500, schedule: "Same Day", tests: "CBC, Glucose F, TFT, Lipid Profile, Creatinine, Uric Acid, Cortisol" },
+    { name: "Tiredness / Weakness Package", price: 3700, schedule: "Same Day", tests: "CBC, Glucose R, AST, CPK, TSH, Iron, Calcium, Creatinine, Na, K, Cl" },
+    { name: "Paediatric Panel", price: 3200, schedule: "Same Day", tests: "CBC, Reticulocyte Count, ESR, Blood Group, LFT, Growth Hormone, Stool R/E, Urine R/E" },
+    { name: "Health Kundli (Bride & Groom)", price: 1200, schedule: "Same Day", tests: "Blood Group, VDRL, HBsAg, HIV 1&2" },
+    { name: "Hunger Package", price: 3000, schedule: "Same Day", tests: "CBC, Vitamin B12, Stool H. Pylori Antigen" },
+    { name: "UTI Screen Panel", price: 550, schedule: "Same Day", tests: "Blood Sugar, Urine R/E, Urine C/S" },
+  ],
+  blood: [
+    { name: "Complete Haemogram (CBC)", price: 500, schedule: "Same Day" },
+    { name: "Complete Hemogram", price: 1000, schedule: "Same Day" },
+    { name: "Anemia Profile I", price: 2500, schedule: "Same Day" },
+    { name: "Anemia Profile II", price: 6500, schedule: "Same Day" },
+    { name: "Iron Profile", price: 2500, schedule: "Same Day" },
+    { name: "Coagulation Panel", price: 1200, schedule: "Same Day" },
+    { name: "DIC Profile", price: 4500, schedule: "Same Day" },
+    { name: "Thalassemia Profile", price: 4000, schedule: "Same Day" },
+    { name: "Macrocytic Anemia Panel", price: 3000, schedule: "Same Day" },
+    { name: "Body Fluid Examination", price: 1350, schedule: "Same Day" },
+    { name: "Bone Marrow Examination", price: 3000, schedule: "Same Day" },
+    { name: "Pre-Operative Panel", price: 4200, schedule: "Same Day" },
+  ],
+  diabetes: [
+    { name: "Diabetes Panel Basic", price: 850, schedule: "Same Day" },
+    { name: "Diabetes Monitoring Panel I", price: 2700, schedule: "Same Day" },
+    { name: "Diabetes Monitoring Panel II", price: 7000, schedule: "Same Day" },
+    { name: "Comprehensive Diabetes Panel", price: 7000, schedule: "Same Day" },
+    { name: "Diabetes Profile – MRP", price: 2680, schedule: "Same Day" },
+  ],
+  heart: [
+    { name: "Cardiac Risk Panel", price: 3000, schedule: "Same Day" },
+    { name: "Lipid Profile", price: 1000, schedule: "Same Day" },
+    { name: "Hypertension Panel", price: 2600, schedule: "Same Day" },
+    { name: "Basic Metabolic Panel", price: 2000, schedule: "Same Day" },
+    { name: "Comprehensive Metabolic Panel", price: 2000, schedule: "Same Day" },
+  ],
+  liver: [
+    { name: "Liver Function Panel (LFT)", price: 1000, schedule: "Same Day" },
+    { name: "Complete Liver Function Test (C-LFT)", price: 2500, schedule: "Same Day" },
+    { name: "RFT / KFT (Renal Function Test)", price: 1000, schedule: "Same Day" },
+    { name: "Nephro Panel", price: 1600, schedule: "Same Day" },
+    { name: "Electrolytes", price: 600, schedule: "Same Day" },
+    { name: "Pancreatic Panel", price: 1600, schedule: "Same Day" },
+    { name: "Parathyroid Panel", price: 1850, schedule: "Same Day" },
+    { name: "Osteoscreen Panel", price: 5200, schedule: "Same Day" },
+    { name: "Joint / Bone Pain Profile", price: 1200, schedule: "Same Day" },
+    { name: "Diarrhoea Profile I", price: 800, schedule: "Same Day" },
+    { name: "Diarrhoea Profile II", price: 2000, schedule: "Same Day" },
+  ],
+  thyroid: [
+    { name: "Thyroid Function Test (TFT)", price: 1000, schedule: "Same Day" },
+    { name: "Menopausal Monitoring Panel", price: 5000, schedule: "Same Day" },
+    { name: "Fertility Panel (Male)", price: 5300, schedule: "Same Day" },
+    { name: "Fertility Panel (Female)", price: 7200, schedule: "Same Day" },
+    { name: "Collagen Panel", price: 8500, schedule: "Same Day" },
+    { name: "Rheumatoid Arthritis Panel", price: 4500, schedule: "Same Day" },
+    { name: "Arthritis Panel", price: 1600, schedule: "Same Day" },
+  ],
+  infectious: [
+    { name: "Acute Hepatitis Panel", price: 3890, schedule: "Same Day" },
+    { name: "Hepatitis Screening Panel", price: 4800, schedule: "Same Day" },
+    { name: "Hepatitis A & B Virus Evaluation", price: 10000, schedule: "Same Day" },
+    { name: "Hepatitis Virus Comprehensive Profile", price: 11000, schedule: "Same Day" },
+    { name: "Triple Infection Panel", price: 1500, schedule: "Same Day" },
+    { name: "Dengue Panel", price: 1800, schedule: "Same Day" },
+    { name: "Fever Panel I", price: 1100, schedule: "Same Day" },
+    { name: "Fever Screening Panel", price: 7000, schedule: "Same Day" },
+    { name: "Fever Screening Panel (Paediatric)", price: 4000, schedule: "Same Day" },
+    { name: "Drug Abuse Panel", price: 6500, schedule: "Same Day" },
+    { name: "Immunoglobulin Profile", price: 4500, schedule: "Same Day" },
+  ],
+  cancer: [
+    { name: "Oncopanal (Cancer Panel)", price: 5700, schedule: "Same Day" },
+    { name: "Breast Cancer Marker", price: 3000, schedule: "Same Day" },
+    { name: "Triple Marker Test (2nd Trimester)", price: 3300, schedule: "Same Day" },
+    { name: "Biopsy – Large Specimen (CAT A)", price: 3000, schedule: "8–10 days" },
+    { name: "Biopsy – Large Specimen (CAT B)", price: 2500, schedule: "7–8 days" },
+    { name: "Biopsy – Small Specimen (CAT C)", price: 2000, schedule: "5–7 days" },
+    { name: "Biopsy – Small Specimen (CAT D)", price: 1500, schedule: "2–5 days" },
+  ],
+  women: [
+    { name: "Antenatal Panel", price: 2200, schedule: "Same Day" },
+    { name: "Female Elderly Package (Post-Menopausal)", price: 3000, schedule: "Same Day" },
+  ],
+  allergy: [
+    { name: "Allergy Food Panel (20 allergens)", price: 4750, schedule: "Same Day" },
+    { name: "Allergy Inhalation Panel (20 allergens)", price: 4750, schedule: "Same Day" },
+  ]
+};
+
+const INDIVIDUAL = [
+  { name: "24 hrs Urinary Creatinine", price: 500, schedule: "Same Day" },
+  { name: "24 hrs Urine Protein", price: 700, schedule: "Same Day" },
+  { name: "Absolute Basophil / Lymphocyte / Neutrophil Count", price: 180, schedule: "Same Day" },
+  { name: "ACE (Angiotensin Converting Enzyme)", price: 2800, schedule: "Out Source" },
+  { name: "AFP (Alpha Feto Protein)", price: 1400, schedule: "Same Day" },
+  { name: "Albumin", price: 200, schedule: "Same Day" },
+  { name: "Albumin Creatinine Ratio (A/C Ratio)", price: 1000, schedule: "Same Day" },
+  { name: "Alkaline Phosphatase (ALP)", price: 250, schedule: "Same Day" },
+  { name: "Allergy Food Profile (20 allergens)", price: 4750, schedule: "Same Day" },
+  { name: "Allergy Inhalation Profile (20 allergens)", price: 4750, schedule: "Same Day" },
+  { name: "AMH (Anti Mullerian Hormone)", price: 4000, schedule: "Same Day" },
+  { name: "Amylase", price: 500, schedule: "Same Day" },
+  { name: "ANA / ANF (Anti-Nuclear Antibody)", price: 1800, schedule: "Same Day" },
+  { name: "Anti CCP (Anti-Cyclic Citrullinated Peptide)", price: 2500, schedule: "Same Day" },
+  { name: "Anti TPO (Anti-Thyroperoxidase)", price: 1800, schedule: "Same Day" },
+  { name: "APTT", price: 800, schedule: "Same Day" },
+  { name: "ASO (Anti Streptolysin-O) Test", price: 400, schedule: "Same Day" },
+  { name: "Barbiturates (Urine)", price: 1000, schedule: "Same Day" },
+  { name: "Benzodiazepine (Urine)", price: 1500, schedule: "Same Day" },
+  { name: "b-HCG (Pregnancy Test – Serum)", price: 1800, schedule: "Same Day" },
+  { name: "Bilirubin (Total and Direct)", price: 250, schedule: "Same Day" },
+  { name: "Blood Culture & Sensitivity", price: 750, schedule: "72 hrs–7 days" },
+  { name: "Blood Grouping Rh Typing", price: 100, schedule: "Same Day" },
+  { name: "Bone Marrow Examination", price: 3000, schedule: "Same Day" },
+  { name: "BT (Bleeding Time)", price: 150, schedule: "Same Day" },
+  { name: "CA-125", price: 1900, schedule: "Same Day" },
+  { name: "CA-15.3", price: 2000, schedule: "Same Day" },
+  { name: "CA-19.9", price: 2000, schedule: "Same Day" },
+  { name: "Calcium", price: 500, schedule: "Same Day" },
+  { name: "CBC (Complete Blood Count)", price: 500, schedule: "Same Day" },
+  { name: "CEA (Carcino Embryonic Antigen)", price: 1500, schedule: "Same Day" },
+  { name: "Chloride", price: 400, schedule: "Same Day" },
+  { name: "Cholesterol – HDL", price: 250, schedule: "Same Day" },
+  { name: "Cholesterol – LDL", price: 450, schedule: "Same Day" },
+  { name: "Cholesterol – Total", price: 200, schedule: "Same Day" },
+  { name: "CK / CPK Total", price: 800, schedule: "Same Day" },
+  { name: "CK-MB / CPK-MB", price: 1000, schedule: "Same Day" },
+  { name: "Cortisol", price: 1500, schedule: "Same Day" },
+  { name: "C-Peptide (Connecting Peptide Insulin)", price: 2000, schedule: "Same Day" },
+  { name: "Creatinine", price: 200, schedule: "Same Day" },
+  { name: "CRP (C-Reactive Protein) Quantitative", price: 800, schedule: "Same Day" },
+  { name: "CRP hs (Highly Sensitive CRP)", price: 1200, schedule: "Same Day" },
+  { name: "CT (Clotting Time)", price: 150, schedule: "Same Day" },
+  { name: "D-Dimer", price: 2080, schedule: "Same Day" },
+  { name: "Dengue (IgG, IgM & NS1 Antigen)", price: 1000, schedule: "Same Day" },
+  { name: "Dengue Antibody (CLIA)", price: 3200, schedule: "Same Day" },
+  { name: "DHEA-S", price: 2200, schedule: "2–6 days" },
+  { name: "Differential Leucocyte Count (DLC)", price: 150, schedule: "Same Day" },
+  { name: "ds-DNA (Double Stranded DNA)", price: 2000, schedule: "Same Day" },
+  { name: "ESR (Erythrocyte Sedimentation Rate)", price: 160, schedule: "Same Day" },
+  { name: "Estradiol (E2)", price: 1500, schedule: "Same Day" },
+  { name: "Ferritin", price: 1300, schedule: "Same Day" },
+  { name: "Fibrinogen Level", price: 2400, schedule: "Same Day" },
+  { name: "FNAC", price: 1500, schedule: "Same Day" },
+  { name: "Folic Acid", price: 1500, schedule: "2–6 days" },
+  { name: "FSH (Follicle Stimulating Hormone)", price: 1500, schedule: "Same Day" },
+  { name: "G6PD (Glucose-6-Phosphate Dehydrogenase)", price: 2300, schedule: "Same Day" },
+  { name: "GGT (Gamma GT)", price: 500, schedule: "Same Day" },
+  { name: "Glucose – Fasting", price: 50, schedule: "Same Day" },
+  { name: "Glucose – PP (Post Prandial)", price: 50, schedule: "Same Day" },
+  { name: "Glucose – Random", price: 50, schedule: "Same Day" },
+  { name: "Growth Hormone", price: 1850, schedule: "2–3 days" },
+  { name: "GTT (Glucose Tolerance Test)", price: 400, schedule: "Same Day" },
+  { name: "Haemoglobin (Hb)", price: 100, schedule: "Same Day" },
+  { name: "Haemoglobin Electrophoresis", price: 2500, schedule: "2–6 days" },
+  { name: "HbA1C (Glycosylated Hb)", price: 900, schedule: "Same Day" },
+  { name: "HBsAg (Hepatitis B Surface Antigen)", price: 500, schedule: "Same Day" },
+  { name: "HBsAg (Quantitative CLIA)", price: 2000, schedule: "2–6 days" },
+  { name: "HCV (Hepatitis C) Ab – ICT", price: 700, schedule: "Same Day" },
+  { name: "HCV RNA – Quantitative (PCR)", price: 7800, schedule: "2–6 days" },
+  { name: "HCV Genotyping", price: 14000, schedule: "2–6 days" },
+  { name: "Helicobacter Pylori Antibody", price: 1100, schedule: "Same Day" },
+  { name: "Helicobacter Pylori Antigen (Stool)", price: 1200, schedule: "Same Day" },
+  { name: "HIV Antibody", price: 600, schedule: "Same Day" },
+  { name: "HIV-I & II Ab (Enhanced CLIA)", price: 2500, schedule: "2–6 days" },
+  { name: "Homocysteine", price: 2500, schedule: "2–3 days" },
+  { name: "Immunoglobulin A (IgA)", price: 2000, schedule: "2–6 days" },
+  { name: "Immunoglobulin E (IgE) Total", price: 2000, schedule: "Same Day" },
+  { name: "Immunoglobulin G (IgG)", price: 1700, schedule: "2–6 days" },
+  { name: "Immunoglobulin M (IgM)", price: 2000, schedule: "2–6 days" },
+  { name: "Iron", price: 700, schedule: "Same Day" },
+  { name: "Iron Profile", price: 2300, schedule: "Same Day" },
+  { name: "Insulin (Fasting / PP / Random)", price: 2000, schedule: "2–6 days" },
+  { name: "LBC (Liquid Based Cytology)", price: 1800, schedule: "1–2 days" },
+  { name: "LDH", price: 500, schedule: "Same Day" },
+  { name: "Leishmania Antigen Test (rk-39 / k39)", price: 1500, schedule: "Same Day" },
+  { name: "Leptospira (IgM + IgG) Antibody", price: 2000, schedule: "Same Day" },
+  { name: "LFT (Liver Function Test)", price: 950, schedule: "Same Day" },
+  { name: "LH (Luteinizing Hormone)", price: 1350, schedule: "Same Day" },
+  { name: "Lipid Profile", price: 900, schedule: "Same Day" },
+  { name: "Lipase", price: 700, schedule: "2–6 days" },
+  { name: "Magnesium", price: 500, schedule: "Same Day" },
+  { name: "Malaria Antigen Test (Serology)", price: 700, schedule: "Same Day" },
+  { name: "Malaria Parasite (Direct Smear)", price: 150, schedule: "Same Day" },
+  { name: "Mantoux (Tuberculin / PPD) Test", price: 200, schedule: "Same Day" },
+  { name: "Microalbumin (Urine)", price: 900, schedule: "Same Day" },
+  { name: "Morphine / Opiate (Urine)", price: 1500, schedule: "Same Day" },
+  { name: "Occult Blood (Stool)", price: 200, schedule: "Same Day" },
+  { name: "PAP Smear", price: 1000, schedule: "Same Day" },
+  { name: "Phosphorus", price: 400, schedule: "Same Day" },
+  { name: "Platelets Count", price: 150, schedule: "Same Day" },
+  { name: "Potassium", price: 300, schedule: "Same Day" },
+  { name: "Pregnancy Test – Urine (βHCG)", price: 150, schedule: "Same Day" },
+  { name: "Progesterone", price: 1600, schedule: "Same Day" },
+  { name: "Prolactin", price: 1550, schedule: "Same Day" },
+  { name: "PSA (Prostate Specific Antigen) – Total", price: 1400, schedule: "Same Day" },
+  { name: "PSA – Free", price: 2800, schedule: "2–6 days" },
+  { name: "PT / INR (Prothrombin Time)", price: 400, schedule: "Same Day" },
+  { name: "RA (Rheumatoid) Factor Test", price: 250, schedule: "Same Day" },
+  { name: "RA Factor Quantitative", price: 750, schedule: "Same Day" },
+  { name: "RFT (Renal Function Test)", price: 1000, schedule: "Same Day" },
+  { name: "RPR (VDRL) Test", price: 300, schedule: "Same Day" },
+  { name: "Rubella IgG Ab", price: 1800, schedule: "2–3 days" },
+  { name: "Rubella IgM Ab", price: 1800, schedule: "2–6 days" },
+  { name: "Scrub Typhus (ICT)", price: 1600, schedule: "Same Day" },
+  { name: "Semen Analysis", price: 500, schedule: "Same Day" },
+  { name: "SGOT (AST)", price: 250, schedule: "Same Day" },
+  { name: "SGPT (ALT)", price: 250, schedule: "Same Day" },
+  { name: "Sodium", price: 400, schedule: "Same Day" },
+  { name: "Stool Culture & Sensitivity", price: 600, schedule: "2–3 days" },
+  { name: "Stool Routine Examination", price: 100, schedule: "Same Day" },
+  { name: "T3 (Triiodothyronine) Free", price: 500, schedule: "Same Day" },
+  { name: "T4 (Thyroxine) Free", price: 500, schedule: "Same Day" },
+  { name: "Testosterone (Total)", price: 2000, schedule: "Same Day" },
+  { name: "Testosterone (Free)", price: 1500, schedule: "Out Source" },
+  { name: "TIBC (Total Iron Binding Capacity)", price: 800, schedule: "Same Day" },
+  { name: "TORCH IgG Antibody", price: 3200, schedule: "2–6 days" },
+  { name: "TORCH IgM Antibody", price: 3200, schedule: "2–6 days" },
+  { name: "TORCH Profile (IgG + IgM)", price: 5000, schedule: "2–6 days" },
+  { name: "Total IgE", price: 2000, schedule: "Same Day" },
+  { name: "Toxoplasma IgG Ab", price: 1800, schedule: "Out Source" },
+  { name: "Toxoplasma IgM Ab", price: 1800, schedule: "Out Source" },
+  { name: "Triglyceride", price: 250, schedule: "Same Day" },
+  { name: "Troponin I – Qualitative", price: 1000, schedule: "Same Day" },
+  { name: "Troponin I – Quantitative", price: 2000, schedule: "Same Day" },
+  { name: "Troponin – Highly Sensitive (THS)", price: 1800, schedule: "Same Day" },
+  { name: "TSH (Thyroid Stimulating Hormone)", price: 500, schedule: "Same Day" },
+  { name: "Typhoid Test (ICT)", price: 1000, schedule: "Same Day" },
+  { name: "Urea", price: 200, schedule: "Same Day" },
+  { name: "Uric Acid", price: 150, schedule: "Same Day" },
+  { name: "Urine Culture & Sensitivity", price: 500, schedule: "Same Day" },
+  { name: "Urine Routine Examination (R/E)", price: 100, schedule: "Same Day" },
+  { name: "Vitamin B-12", price: 1700, schedule: "2–6 days" },
+  { name: "Vitamin D (25-OH Cholecalciferol)", price: 3000, schedule: "Same Day" },
+  { name: "Widal Test", price: 400, schedule: "Same Day" },
+  { name: "Widal (Salmonella Agglutination)", price: 300, schedule: "Same Day" },
+];
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function hl(text, q) {
+  if (!q) return esc(text);
+  return esc(text).replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi'), '<mark>$1</mark>');
+}
+function tagClass(s) {
+  if (!s) return 'tag-same';
+  const l = s.toLowerCase();
+  if (l.includes('same day')) return 'tag-same';
+  if (l.includes('out source')) return 'tag-out';
+  return 'tag-delay';
+}
+
+function renderCard(item, q) {
+  const priceTxt = item.price
+    ? `<span class="nrs">NRS </span>${item.price.toLocaleString()}`
+    : `<span style="font-size:12px;color:var(--muted)">Contact</span>`;
+  const sched = item.schedule || 'Same Day';
+  return `<article class="svc-card">
+    <div class="card-name">${hl(item.name, q)}</div>
+    <div class="card-foot">
+      <div class="card-price">${priceTxt}</div>
+      <span class="tag ${tagClass(sched)}">${esc(sched)}</span>
+    </div>
+  </article>`;
+}
+
+function renderPkg(p, q) {
+  const pills = p.tests.map(t => `<li>${hl(t, q)}</li>`).join('');
+  return `<article class="pkg-card">
+    <div class="pkg-top">
+      <div class="pkg-name">${hl(p.name, q)}</div>
+      <div class="pkg-price"><span class="nrs">NRS </span>${p.price.toLocaleString()}</div>
+    </div>
+    <div class="pkg-tests"><ul>${pills}</ul></div>
+  </article>`;
+}
+
+function buildAll(query) {
+  const q = (query || '').trim().toLowerCase();
+  let total = 0;
+
+  const exPkgs = PACKAGES.executive.filter(p =>
+    !q || p.name.toLowerCase().includes(q) || p.tests.some(t => t.toLowerCase().includes(q))
+  );
+  document.getElementById('grid-executive').innerHTML = exPkgs.map(p => renderPkg(p, q)).join('');
+  updateSec('executive', exPkgs.length);
+  total += exPkgs.length;
+
+  ['general','blood','diabetes','heart','liver','thyroid','infectious','cancer','women','allergy'].forEach(cat => {
+    const items = (PANELS[cat] || []).filter(i =>
+      !q || i.name.toLowerCase().includes(q) || (i.tests && i.tests.toLowerCase().includes(q))
+    );
+    document.getElementById(`grid-${cat}`).innerHTML = items.map(i => renderCard(i, q)).join('');
+    updateSec(cat, items.length);
+    total += items.length;
+  });
+
+  const ind = INDIVIDUAL.filter(i => !q || i.name.toLowerCase().includes(q));
+  document.getElementById('grid-individual').innerHTML = ind.map(i => renderCard(i, q)).join('');
+  updateSec('individual', ind.length);
+  total += ind.length;
+
+  document.getElementById('noResults').classList.toggle('show', total === 0);
+  document.getElementById('count-all').textContent = total;
+  return total;
+}
+
+function updateSec(cat, count) {
+  const sec = document.getElementById(`sec-${cat}`);
+  const cc  = document.getElementById(`cc-${cat}`);
+  const cnt = document.getElementById(`count-${cat}`);
+  if (sec) sec.style.display = count ? '' : 'none';
+  if (cc)  cc.textContent = count + ' ' + (count === 1 ? 'test' : 'tests');
+  if (cnt) cnt.textContent = count;
+}
+
+function filterByCat(cat) {
+  const all = ['executive','general','blood','diabetes','heart','liver','thyroid','infectious','cancer','women','allergy','individual'];
+  buildAll(document.getElementById('searchInput').value);
+  if (cat !== 'all') {
+    all.forEach(s => {
+      const el = document.getElementById(`sec-${s}`);
+      if (el) el.style.display = (s === cat) ? '' : 'none';
+    });
+  }
+}
+
+function resetSearch() {
+  document.getElementById('searchInput').value = '';
+  setPillActive('all');
+  buildAll('');
+}
+
+function setPillActive(cat) {
+  document.querySelectorAll('.pill').forEach(p => {
+    const active = p.dataset.cat === cat;
+    p.classList.toggle('active', active);
+    p.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+}
+
+let searchTimer;
+document.getElementById('searchInput').addEventListener('input', function() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    setPillActive('all');
+    buildAll(this.value);
+  }, 200);
+});
+
+document.querySelectorAll('.pill').forEach(pill => {
+  pill.addEventListener('click', function() {
+    setPillActive(this.dataset.cat);
+    document.getElementById('searchInput').value = '';
+    filterByCat(this.dataset.cat);
+  });
+});
+
+buildAll('');
+
+// ── NAVBAR SCROLL ────────────────────────────────────────────────────────────
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── MOBILE MENU ──────────────────────────────────────────────────────────────
+const mobileToggle  = document.getElementById('mobileToggle');
+const mobileMenu    = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileOverlay');
+const menuClose     = document.getElementById('menuClose');
+
+function openMenu() {
+  mobileMenu.classList.add('open');
+  mobileOverlay.classList.add('open');
+  mobileMenu.setAttribute('aria-hidden', 'false');
+  mobileToggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  mobileOverlay.classList.remove('open');
+  mobileMenu.setAttribute('aria-hidden', 'true');
+  mobileToggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+mobileToggle.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+mobileOverlay.addEventListener('click', closeMenu);
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeMenu();
+});
+</script>
+</body>
+</html>
