@@ -13,11 +13,255 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Font Awesome Icons -->
- <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<!-- ===== LOCATION MODAL STYLES ===== -->
+<style>
+  /* Overlay */
+  .wa-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .wa-modal-overlay.open {
+    display: flex;
+  }
+
+  /* Modal box */
+  .wa-modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 24px 24px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    position: relative;
+    animation: modalIn 0.22s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Close button */
+  .wa-modal-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: #f1f5f9;
+    border: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    color: #64748b;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+  .wa-modal-close:hover { background: #e2e8f0; }
+
+  /* Header */
+  .wa-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .wa-modal-header .wa-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #dcfce7;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    color: #16a34a;
+    flex-shrink: 0;
+  }
+  .wa-modal-header h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .wa-modal-header p {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  /* Package badge */
+  .wa-modal-package {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: #1e40af;
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: none;
+  }
+  .wa-modal-package.visible { display: block; }
+
+  /* Divider */
+  .wa-modal-divider {
+    height: 1px;
+    background: #f1f5f9;
+    margin: 14px 0;
+  }
+
+  /* Location section */
+  .wa-modal-location-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+  }
+
+  /* GPS button */
+  .wa-btn-gps {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1.5px dashed #94a3b8;
+    background: #f8fafc;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s;
+    margin-bottom: 10px;
+  }
+  .wa-btn-gps:hover { background: #f1f5f9; border-color: #64748b; }
+  .wa-btn-gps i { color: #0ea5e9; font-size: 15px; }
+  .wa-btn-gps.loading { color: #94a3b8; cursor: wait; }
+  .wa-btn-gps.success { border-color: #16a34a; background: #f0fdf4; color: #16a34a; }
+
+  /* "or" divider */
+  .wa-or {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+  .wa-or::before, .wa-or::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+  }
+
+  /* Address input */
+  .wa-modal input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #0f172a;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.15s;
+    margin-bottom: 14px;
+    font-family: inherit;
+  }
+  .wa-modal input[type="text"]:focus { border-color: #25D366; }
+  .wa-modal input[type="text"]::placeholder { color: #94a3b8; }
+
+  /* Send button */
+  .wa-btn-send {
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    border: none;
+    background: #25D366;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.15s;
+    font-family: inherit;
+  }
+  .wa-btn-send:hover { background: #1da851; }
+
+  /* Error message */
+  .wa-modal-error {
+    font-size: 12px;
+    color: #dc2626;
+    margin: -10px 0 10px;
+    display: none;
+  }
+  .wa-modal-error.visible { display: block; }
+</style>
 </head>
 
 <body>
+
+<!-- =========================================
+     WHATSAPP LOCATION MODAL (shared, one instance)
+========================================= -->
+<div class="wa-modal-overlay" id="waModalOverlay" role="dialog" aria-modal="true" aria-labelledby="waModalTitle">
+  <div class="wa-modal">
+    <button class="wa-modal-close" onclick="closeWaModal()" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <div class="wa-modal-header">
+      <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
+      <div>
+        <h3 id="waModalTitle">Book Appointment</h3>
+        <p>We'll confirm your slot within minutes</p>
+      </div>
+    </div>
+
+    <!-- Package name shown when booking a specific package -->
+    <div class="wa-modal-package" id="waModalPackage"></div>
+
+    <div class="wa-modal-divider"></div>
+
+    <div class="wa-modal-location-label">
+      <i class="fas fa-map-marker-alt" style="color:#ef4444; margin-right:5px;"></i>
+      Share your location for home collection
+    </div>
+
+    <!-- Option A: Auto GPS -->
+    <button class="wa-btn-gps" id="waGpsBtn" onclick="useGPS()">
+      <i class="fas fa-crosshairs"></i>
+      <span id="waGpsBtnText">Use my current GPS location</span>
+    </button>
+
+    <!-- Divider -->
+    <div class="wa-or">or type your address</div>
+
+    <!-- Option B: Manual address -->
+    <input
+      type="text"
+      id="waAddressInput"
+      placeholder="e.g. Bharatpur-10, near City Hall"
+      autocomplete="street-address"
+    />
+    <div class="wa-modal-error" id="waError">Please enter your area/address to continue.</div>
+
+    <button class="wa-btn-send" onclick="sendToWhatsApp()">
+      <i class="fab fa-whatsapp"></i> Send on WhatsApp
+    </button>
+  </div>
+</div>
+
 
 <!-- =========================================
      NAVBAR
@@ -35,9 +279,10 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-cta">
-    <a href="https://wa.me/9779761894416?text=Hello%20I%20would%20like%20to%20book%20an%20appointment." class="btn btn-primary">
+    <!-- Changed: onclick opens modal instead of direct wa.me link -->
+    <button onclick="openWaModal()" class="btn btn-primary" style="border:none; cursor:pointer;">
       <i class="fas fa-calendar-check"></i> Book Appointment
-    </a>
+    </button>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
       <i class="fas fa-bars"></i>
     </button>
@@ -46,7 +291,7 @@
 
 <!-- =========================================
      HERO
-     ========================================= -->
+========================================= -->
 <section class="hero" id="home">
   <div class="container">
     <div class="hero-grid">
@@ -60,9 +305,10 @@
         </h1>
         <p>Providing accurate laboratory testing, preventive health screening, and expert diagnostic services with advanced medical technology — delivered with care you can trust.</p>
         <div class="hero-buttons">
-          <a href="https://wa.me/9779761894416?text=Hello%20I%20would%20like%20to%20book%20an%20appointment." class="btn btn-primary">
+          <!-- Changed: onclick opens modal -->
+          <button onclick="openWaModal()" class="btn btn-primary" style="border:none; cursor:pointer;">
             <i class="fas fa-calendar-check"></i> Book Appointment
-          </a>
+          </button>
           <a href="service.html" class="btn btn-outline">
             View Services <i class="fas fa-arrow-right"></i>
           </a>
@@ -80,6 +326,10 @@
             <i class="fas fa-clock"></i>
             <span>Same Day Reports</span>
           </div>
+          <a href="https://www.google.com/maps/place/GM+Diagnostic+Lab+Pvt.Ltd./@27.6649357,84.4207904,63m/data=!3m1!1e3!4m6!3m5!1s0x3994fb97d63dd337:0x6ef14c3771e5c3ee!8m2!3d27.6650141!4d84.4209695!16s%2Fg%2F11v3_5xs1b?hl=en&entry=ttu&g_ep=EgoyMDI2MDYxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="hero-feature">
+            <i class="fas fa-location-dot"></i>
+            <span>Find Us</span>
+          </a>
         </div>
       </div>
 
@@ -90,7 +340,6 @@
           onerror="this.src='https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=900&auto=format&fit=crop&q=80'"
         />
         <div class="hero-image-overlay"></div>
-
       </div>
     </div>
   </div>
@@ -99,7 +348,7 @@
 
 <!-- =========================================
      STATISTICS
-     ========================================= -->
+========================================= -->
 <section class="stats-section" id="about">
   <div class="container">
     <div class="stats-grid">
@@ -129,7 +378,7 @@
 
 <!-- =========================================
      SERVICES
-     ========================================= -->
+========================================= -->
 <section class="services-section" id="services">
   <div class="container">
     <div class="section-head reveal">
@@ -194,7 +443,7 @@
 
 <!-- =========================================
      WHY CHOOSE US
-     ========================================= -->
+========================================= -->
 <section class="why-section">
   <div class="container">
     <div class="section-head reveal">
@@ -240,7 +489,7 @@
 
 <!-- =========================================
      PACKAGES
-     ========================================= -->
+========================================= -->
 <section class="packages-section" id="packages">
   <div class="container">
     <div class="section-head reveal">
@@ -268,7 +517,8 @@
           <li><i class="fas fa-check-circle"></i> Urine R/M/E</li>
           <li><i class="fas fa-check-circle"></i> Doctor's Consultation</li>
         </ul>
-        <a href="#appointment" class="btn btn-outline" style="width:100%; justify-content:center;">Book Now</a>
+        <!-- Changed: onclick with package name -->
+        <button onclick="openWaModal('Basic Package — NRs. 3,500')" class="btn btn-outline" style="width:100%; justify-content:center; cursor:pointer; border:none;">Book Now</button>
       </div>
 
       <!-- MEDIUM -->
@@ -288,7 +538,7 @@
           <li><i class="fas fa-check-circle"></i> Urine R/M/E</li>
           <li><i class="fas fa-check-circle"></i> Doctor's Consultation</li>
         </ul>
-        <a href="#appointment" class="btn btn-outline" style="width:100%; justify-content:center;">Book Now</a>
+        <button onclick="openWaModal('Medium Package — NRs. 5,500')" class="btn btn-outline" style="width:100%; justify-content:center; cursor:pointer; border:none;">Book Now</button>
       </div>
 
       <!-- ADVANCED (featured) -->
@@ -309,7 +559,7 @@
           <li><i class="fas fa-check-circle"></i> Urine R/M/E</li>
           <li><i class="fas fa-check-circle"></i> Doctor's Consultation</li>
         </ul>
-        <a href="#appointment" class="btn btn-primary" style="width:100%; justify-content:center;">Book Now</a>
+        <button onclick="openWaModal('Advanced Package — NRs. 7,000')" class="btn btn-primary" style="width:100%; justify-content:center; cursor:pointer; border:none;">Book Now</button>
       </div>
 
       <!-- BIRTHDAY -->
@@ -330,7 +580,7 @@
           <li><i class="fas fa-check-circle"></i> Urine R/M/E</li>
           <li><i class="fas fa-check-circle"></i> Doctor's Consultation</li>
         </ul>
-        <a href="#appointment" class="btn btn-outline" style="width:100%; justify-content:center;">Book Now</a>
+        <button onclick="openWaModal('Birthday Package — NRs. 5,500 🎂')" class="btn btn-outline" style="width:100%; justify-content:center; cursor:pointer; border:none;">Book Now</button>
       </div>
 
       <!-- PREMIUM -->
@@ -349,9 +599,8 @@
           <li><i class="fas fa-check-circle"></i> Urine R/M/E</li>
           <li><i class="fas fa-check-circle"></i> Doctor's Consultation</li>
         </ul>
-        <a href="#appointment" class="btn btn-outline" style="width:100%; justify-content:center;">Book Now</a>
+        <button onclick="openWaModal('Premium Package — NRs. 15,000')" class="btn btn-outline" style="width:100%; justify-content:center; cursor:pointer; border:none;">Book Now</button>
       </div>
-
 
     </div>
   </div>
@@ -359,7 +608,7 @@
 
 <!-- =========================================
      FAQ
-     ========================================= -->
+========================================= -->
 <section class="faq-section">
   <div class="container">
     <div class="section-head reveal">
@@ -446,7 +695,7 @@
 
 <!-- =========================================
      APPOINTMENT
-     ========================================= -->
+========================================= -->
 <section class="appointment-section" id="appointment">
   <div class="container">
     <div class="appointment-grid">
@@ -487,32 +736,28 @@
         </div>
       </div>
 
-<div class="appointment-whatsapp reveal">
-  <div class="whatsapp-content">
-    <i class="fab fa-whatsapp"></i>
-    <h3>Book Your Appointment on WhatsApp</h3>
-    <p>
-      Chat with our team directly to schedule your appointment,
-      ask questions, and receive pricing information instantly.
-    </p>
-
-    <a
-      href="https://wa.me/9779761894416?text=Hello%20I%20would%20like%20to%20book%20an%20appointment."
-      target="_blank"
-      class="btn btn-whatsapp"
-    >
-      <i class="fab fa-whatsapp"></i>
-      Message on WhatsApp
-    </a>
-  </div>
-</div>
+      <div class="appointment-whatsapp reveal">
+        <div class="whatsapp-content">
+          <i class="fab fa-whatsapp"></i>
+          <h3>Book Your Appointment on WhatsApp</h3>
+          <p>
+            Chat with our team directly to schedule your appointment,
+            ask questions, and receive pricing information instantly.
+          </p>
+          <!-- Changed: opens modal -->
+          <button onclick="openWaModal()" class="btn btn-whatsapp" style="border:none; cursor:pointer;">
+            <i class="fab fa-whatsapp"></i>
+            Message on WhatsApp
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================
      FOOTER
-     ========================================= -->
+========================================= -->
 <footer class="footer" id="contact">
   <div class="container">
     <div class="footer-grid">
@@ -524,10 +769,6 @@
         <p>Accurate Diagnostics. Better Healthcare. Your trusted NABL certified laboratory delivering excellence in medical diagnostics since 2023.</p>
         <div class="social-icons">
           <a href="https://www.facebook.com/gm.diagnostic.lab" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <!-- <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a> -->
         </div>
       </div>
 
@@ -538,7 +779,6 @@
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#packages">Packages</a></li>
-          <!-- <li><a href="#doctors">Our Doctors</a></li> -->
           <li><a href="#appointment">Contact</a></li>
         </ul>
       </div>
@@ -589,6 +829,135 @@
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <i class="fas fa-arrow-up"></i>
 </button>
+
 <script src="scripts.js"></script>
+
+<!-- ===== WHATSAPP LOCATION MODAL SCRIPT ===== -->
+<script>
+  const WA_NUMBER = "9779761894416"; // Your WhatsApp number
+  let currentPackage = "";
+  let cachedGpsLink = "";  // Stores GPS link once detected
+
+  /* Open modal — optionally pass a package name */
+  function openWaModal(packageName) {
+    currentPackage = packageName || "";
+    cachedGpsLink = "";
+
+    // Show or hide package badge
+    const badge = document.getElementById("waModalPackage");
+    if (currentPackage) {
+      badge.textContent = "📋 Selected: " + currentPackage;
+      badge.classList.add("visible");
+    } else {
+      badge.classList.remove("visible");
+    }
+
+    // Reset GPS button
+    const gpsBtn = document.getElementById("waGpsBtn");
+    const gpsBtnText = document.getElementById("waGpsBtnText");
+    gpsBtn.className = "wa-btn-gps";
+    gpsBtnText.textContent = "Use my current GPS location";
+
+    // Clear address field and error
+    document.getElementById("waAddressInput").value = "";
+    document.getElementById("waError").classList.remove("visible");
+
+    // Open overlay
+    document.getElementById("waModalOverlay").classList.add("open");
+    document.body.style.overflow = "hidden";
+
+    // Focus address field after animation
+    setTimeout(() => document.getElementById("waAddressInput").focus(), 250);
+  }
+
+  /* Close modal */
+  function closeWaModal() {
+    document.getElementById("waModalOverlay").classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  /* GPS detection */
+  function useGPS() {
+    const btn = document.getElementById("waGpsBtn");
+    const btnText = document.getElementById("waGpsBtnText");
+
+    if (!navigator.geolocation) {
+      btnText.textContent = "GPS not supported on this device";
+      return;
+    }
+
+    btn.classList.add("loading");
+    btnText.textContent = "Detecting your location…";
+
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        const lat = pos.coords.latitude.toFixed(5);
+        const lng = pos.coords.longitude.toFixed(5);
+        cachedGpsLink = "https://maps.google.com/?q=" + lat + "," + lng;
+
+        btn.classList.remove("loading");
+        btn.classList.add("success");
+        btnText.textContent = "✓ GPS location detected!";
+
+        // Clear manual address since GPS is ready
+        document.getElementById("waAddressInput").value = "";
+        document.getElementById("waError").classList.remove("visible");
+      },
+      function() {
+        btn.classList.remove("loading");
+        btnText.textContent = "Location denied — please type your address below";
+        cachedGpsLink = "";
+      }
+    );
+  }
+
+  /* Build and send WhatsApp message */
+  function sendToWhatsApp() {
+    const manualAddress = document.getElementById("waAddressInput").value.trim();
+    const errorEl = document.getElementById("waError");
+
+    // Determine location string
+    let locationStr = "";
+    if (cachedGpsLink) {
+      locationStr = cachedGpsLink;
+    } else if (manualAddress) {
+      locationStr = manualAddress;
+    } else {
+      // Neither GPS nor address — show error
+      errorEl.classList.add("visible");
+      document.getElementById("waAddressInput").focus();
+      return;
+    }
+
+    errorEl.classList.remove("visible");
+
+    // Build the WhatsApp message
+    let msg = "Hello, I would like to book an appointment.";
+    if (currentPackage) {
+      msg += "\n📋 Package: " + currentPackage;
+    }
+    msg += "\n📍 My location: " + locationStr;
+
+    const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank");
+    closeWaModal();
+  }
+
+  /* Close modal on overlay click */
+  document.getElementById("waModalOverlay").addEventListener("click", function(e) {
+    if (e.target === this) closeWaModal();
+  });
+
+  /* Close modal on Escape key */
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") closeWaModal();
+  });
+
+  /* Send on Enter key in address input */
+  document.getElementById("waAddressInput").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") sendToWhatsApp();
+  });
+</script>
+
 </body>
 </html>
