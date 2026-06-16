@@ -166,7 +166,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 
-
 // const revealObserver = new IntersectionObserver((entries) => {
 //   entries.forEach((entry, i) => {
 //     if (entry.isIntersecting) {
